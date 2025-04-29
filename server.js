@@ -10,6 +10,13 @@ const DATA_FILE = path.join(__dirname, 'data.json');
 // Middleware
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // ou especifique a origem do React
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
+  
 // Helper functions
 const readNotes = () => {
   try {
